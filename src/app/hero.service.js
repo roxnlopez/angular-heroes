@@ -6,12 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var mock_heroes_1 = require("./mock-heroes");
 var core_1 = require("@angular/core");
+var HeroesComponent = (function () {
+    function HeroesComponent() {
+    }
+    return HeroesComponent;
+}());
+exports.HeroesComponent = HeroesComponent;
 var HeroService = (function () {
     function HeroService() {
     }
     HeroService.prototype.getHeroes = function () {
-        return Promise.resolve(HEROES);
+        return Promise.resolve(mock_heroes_1.HEROES);
     };
     HeroService.prototype.getHeroesSlowly = function () {
         var _this = this;
@@ -21,8 +28,9 @@ var HeroService = (function () {
         });
     };
     HeroService.prototype.getHero = function (id) {
+        var _this = this;
         return this.getHeroes()
-            .then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
+            .then(function (heroes) { return heroes.find(function (hero) { return _this.hero.id === id; }); });
     };
     return HeroService;
 }());

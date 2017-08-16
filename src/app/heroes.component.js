@@ -10,8 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var hero_service_1 = require("./hero.service");
 var HeroesComponent = (function () {
-    function HeroesComponent(heroService) {
+    function HeroesComponent(router, heroService) {
+        this.router = router;
         this.heroService = heroService;
     }
     HeroesComponent.prototype.getHeroes = function () {
@@ -19,6 +22,7 @@ var HeroesComponent = (function () {
         this.heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
     };
     HeroesComponent.prototype.ngOnInit = function () {
+        this.getHeroes();
     };
     HeroesComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
@@ -31,9 +35,11 @@ var HeroesComponent = (function () {
 HeroesComponent = __decorate([
     core_1.Component({
         selector: 'my-heroes',
+        templateUrl: './heroes.component.html',
         styleUrls: ['./heroes.component.css']
     }),
-    __metadata("design:paramtypes", [Object])
+    __metadata("design:paramtypes", [router_1.Router,
+        hero_service_1.HeroService])
 ], HeroesComponent);
 exports.HeroesComponent = HeroesComponent;
 //# sourceMappingURL=heroes.component.js.map

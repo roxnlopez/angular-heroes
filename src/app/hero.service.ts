@@ -1,5 +1,10 @@
 import { Hero } from './hero';
+import { HEROES } from './mock-heroes';
 import { Injectable } from '@angular/core';
+
+export class HeroesComponent {
+  hero: Hero;
+}
 
 @Injectable()
 export class HeroService {
@@ -16,6 +21,6 @@ export class HeroService {
 
   getHero(id: number): Promise<Hero> {
     return this.getHeroes()
-               .then(heroes => heroes.find(hero => hero.id === id));
+               .then(heroes => heroes.find(hero => parseInt(hero.id) === id));
   }
 }
