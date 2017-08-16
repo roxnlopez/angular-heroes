@@ -11,6 +11,7 @@ export class HeroService {
   getHeroes(): Promise<Hero[]> {
     return Promise.resolve(HEROES);
   }
+  hero: Hero;
 
   getHeroesSlowly(): Promise<Hero[]> {
     return new Promise(resolve => {
@@ -21,6 +22,6 @@ export class HeroService {
 
   getHero(id: number): Promise<Hero> {
     return this.getHeroes()
-               .then(heroes => heroes.find(hero => parseInt(hero.id) === id));
+               .then(heroes => heroes.find(hero => this.hero.id == id));
   }
 }

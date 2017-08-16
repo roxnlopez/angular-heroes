@@ -30,7 +30,7 @@ var HeroService = (function () {
     HeroService.prototype.getHero = function (id) {
         var _this = this;
         return this.getHeroes()
-            .then(function (heroes) { return heroes.find(function (hero) { return _this.hero.id === id; }); });
+            .then(function (heroes) { return heroes.find(function (hero) { return _this.hero.id == id; }); });
     };
     return HeroService;
 }());
